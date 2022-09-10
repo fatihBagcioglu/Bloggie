@@ -1,0 +1,33 @@
+﻿@model Post
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<h1>@Model.Title</h1>
+
+<div class="text-muted">
+    Posted by @Model.Author.DisplayName on @Model.CreatedTime.ToShortDateString()
+</div>
+
+<div class="post-content">
+    @Html.Raw(Model.Content)
+</div>
+
+
+
+
+
+<div class="card-body">
+    <form asp-controller="Home" asp-action="Comment" method="post">
+        <div class="form-group">
+
+            <input asp-for="@Model.Id" type="hidden" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="@Model.CommentContent">Comment:</label>
+            <input asp-for="@Model.CommentContent" type="text" class="form-control"/>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Add Comment</button>
+    </form>
+</div>

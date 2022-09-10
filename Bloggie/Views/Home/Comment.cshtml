@@ -1,0 +1,40 @@
+﻿@model List<Comment>
+@{
+    ViewData["Title"] = "Comment";
+}
+<link href="~/css/comment.css" style="stylesheet" />
+<div class="container bootstrap snippets bootdey">
+    <div class="row">
+        <div class="panel panel-default widget">
+            <div class="panel-heading">
+                <span class="glyphicon glyphicon-comment"></span>
+                <h3 class="panel-title">
+                    Recent Comments
+                </h3>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <div class="row">
+                            @foreach (var item in Model)
+                            {
+                                <div class="col-xs-10 col-md-11">
+                                    <div>
+                                        <div class="mic-info">
+                                            <a class="fas fa-user-check"></a>
+                                            <a>By: @item.Author</a> @item.CreatedTime.ToShortDateString()
+                                        </div>
+                                    </div>
+                                    <div class="comment-text">
+                                        @item.Content
+                                    </div>
+                                    <hr />
+                                </div>
+                            }
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
